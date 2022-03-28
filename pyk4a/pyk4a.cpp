@@ -527,7 +527,7 @@ k4a_result_t k4a_image_to_numpy(k4a_image_t *img_src, PyArrayObject **img_dst) {
     dims[0] = k4a_image_get_height_pixels(*img_src);
     dims[1] = k4a_image_get_width_pixels(*img_src);
     dims[2] = 3;
-    *img_dst = (PyArrayObject *)PyArray_SimpleNewFromData(3, dims, NPY_INT16, buffer);
+    *img_dst = (PyArrayObject*) PyArray_SimpleNewFromData(3, dims, NPY_INT16, buffer);
     break;
   default:
     // Not supported
@@ -551,11 +551,11 @@ k4a_result_t numpy_to_k4a_image(PyArrayObject *img_src, k4a_image_t *img_dst, k4
   case K4A_IMAGE_FORMAT_DEPTH16:
   case K4A_IMAGE_FORMAT_CUSTOM16:
   case K4A_IMAGE_FORMAT_IR16:
-    pixel_size = (int)sizeof(uint16_t);
-    break;
+      pixel_size = (int)sizeof(uint16_t);
+      break;
   case K4A_IMAGE_FORMAT_COLOR_BGRA32:
-    pixel_size = (int)sizeof(uint32_t);
-    break;
+      pixel_size = (int)sizeof(uint32_t);
+      break;
   case K4A_IMAGE_FORMAT_CUSTOM8:
     pixel_size = (int)sizeof(uint8_t);
     break;
